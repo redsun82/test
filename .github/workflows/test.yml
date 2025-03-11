@@ -6,9 +6,12 @@ jobs:
   prepare:
     outputs:
       foo: ${{ steps.foo.outputs.foo }}
+      runner: ${{ steps.foo.outputs.runner }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo foo=42 >> $GITHUB_OUTPUTS
+      - run: |
+          echo foo=42 >> $GITHUB_OUTPUTS
+          echo runner=ubuntu-latest >> $GITHUB_OUTPUTS
         id: foo
         if: false
   do:
@@ -22,7 +25,7 @@ jobs:
         if: ${{ !needs.prepare.outputs.foo }}
   maybe:
     needs: [prepare]
-    runs-on: ubuntu-latest
+    runs-on: ${{ needs.prepare.outputs.foo }}
     if: ${{ needs.prepare.outputs.foo }}
     steps:
       - run: echo yay
