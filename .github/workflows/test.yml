@@ -1,0 +1,34 @@
+on:
+  workflow_dispatch: {}
+
+jobs:
+  prepare:
+    outputs:
+      foo: ${{ steps.foo.outputs.foo }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo foo=42 >> $GITHUB_OUTPUTS
+        id: foo
+        if: false
+  do:
+    needs: [prepare]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ needs.prepare.outputs.foo }}
+      - run: echo yay
+        if: needs.prepare.outputs.foo
+      - run: echo nay
+        if: ${{ !needs.prepare.outputs.foo }}
+  maybe:
+    needs: [prepare]
+    runs-on: ubuntu-latest
+    if: ${{ needs.prepare.outputs.foo }}
+    steps:
+      - run: echo yay
+  maybe-not:
+    needs: [prepare]
+    runs-on: ubuntu-latest
+    if: ${{ !needs.prepare.outputs.foo }}
+    steps:
+      - run: echo yay
+    
