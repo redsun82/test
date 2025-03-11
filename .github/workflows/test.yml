@@ -5,36 +5,16 @@ on:
 jobs:
   prepare:
     outputs:
-      foo: ${{ steps.foo.outputs.foo }}
-      spec: ${{ steps.foo.outputs.spec }}
+      runner: ${{ steps.foo.outputs.runner }}
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo foo=42 >> $GITHUB_OUTPUTS
-          echo 'spec={ "runs-on": ["ubuntu-latest"] }' >> $GITHUB_OUTPUTS
+          echo runner=ubuntu-latest >> $GITHUB_OUTPUTS
         id: foo
         if: false
-  do:
-    needs: [prepare]
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo ${{ needs.prepare.outputs.foo }}
-      - run: echo yay
-        if: needs.prepare.outputs.foo
-      - run: echo nay
-        if: ${{ !needs.prepare.outputs.foo }}
   maybe:
     needs: [prepare]
-    strategy:
-      matrix: ${{ fromJson(needs.prepare.outputs.spec) }}
-    runs-on: ${{ matrix.runs-on }}
-    if: ${{ needs.prepare.outputs.foo }}
+    runs-on: ${{ needs.prepare.outputs.runner }}
+    if: ${{ needs.prepare.outputs.runner }}
     steps:
-      - run: echo yay
-  maybe-not:
-    needs: [prepare]
-    runs-on: ubuntu-latest
-    if: ${{ !needs.prepare.outputs.foo }}
-    steps:
-      - run: echo yay
-    
+      - run: echo whoops
