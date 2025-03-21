@@ -9,7 +9,8 @@ jobs:
   main:
     strategy:
       matrix:
-        x: [${{ github.ref }}]
+        x:
+          - ${{ github.ref }}
     runs-on: ubuntu-latest
     outputs:
       x: ${{ matrix.x }}
