@@ -1,4 +1,6 @@
-on: push
+on:
+  - push
+  - workflow_dispatch
 
 env:
   RUNNER: ubuntu-latest
@@ -6,6 +8,5 @@ env:
 jobs:
   main:
     runs-on: ${{ env.RUNNER }}
-    name: ${{ env.RUNNER }}
     steps:
       - run: echo hello
