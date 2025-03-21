@@ -8,5 +8,7 @@ env:
 jobs:
   main:
     runs-on: ubuntu-latest
+    env:
+      BAR: ${{ env.FOO }}
     steps:
       - run: echo ${{ env.FOO }}
