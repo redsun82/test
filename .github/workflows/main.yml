@@ -9,7 +9,7 @@ jobs:
   main:
     strategy:
       matrix:
-        x: [${{ env.FOO }}]
+        x: [${{ github.ref }}]
     runs-on: ubuntu-latest
     outputs:
       x: ${{ matrix.x }}
