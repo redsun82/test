@@ -1,7 +1,10 @@
 on: push
 
+env:
+  RUNNER: ubuntu-latest
+
 jobs:
   main:
-    runs-on: ubuntu-latest
+    runs-on: ${{ env.RUNNER }}
     steps:
       - run: echo hello
