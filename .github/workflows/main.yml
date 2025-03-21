@@ -3,10 +3,10 @@ on:
   - workflow_dispatch
 
 env:
-  RUNNER: ubuntu-latest
+  FOO: bar
 
 jobs:
   main:
-    runs-on: ${{ env.RUNNER }}
+    runs-on: ubuntu-latest
     steps:
-      - run: echo hello
+      - run: echo ${{ env.FOO }}
