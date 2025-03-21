@@ -7,10 +7,10 @@ env:
 
 jobs:
   main:
-    runs-on: ubuntu-latest
     strategy:
       matrix:
-        x: [${{ env.FOO }}]
+        x: [a]
+    runs-on: ubuntu-latest
     outputs:
       x: ${{ matrix.x }}
     steps:
