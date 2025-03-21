@@ -8,8 +8,11 @@ env:
 jobs:
   main:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        x: [${{ env.FOO }}]
     outputs:
-      x: ${{ env.FOO }}
+      x: ${{ matrix.x }}
     steps:
       - run: echo ${{ env.FOO }}
 
