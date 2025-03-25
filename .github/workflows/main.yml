@@ -5,8 +5,9 @@ on:
       foo:
         description: foo
         required: true
-        default: bar
-        
+        default: ${{ 'bar' }}
+        type: ${{ 'string' }}
+
 jobs:
   main:
     runs-on: ubuntu-latest
