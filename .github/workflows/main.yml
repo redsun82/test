@@ -9,4 +9,4 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ strategy.job-index }}
+      - run: echo ${{ strategy.job-index }}/${{ strategy.job-total }} ${{ strategy.max-parallel }} ${{ strategy.fail-fast }}
