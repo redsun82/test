@@ -12,4 +12,4 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-    - run: ""
+    - run: echo ${{ inputs.foo }}
