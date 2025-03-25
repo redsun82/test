@@ -8,7 +8,7 @@ env:
 jobs:
   main:
     runs-on: ubuntu-latest
-    env:
+    outputs:
       "${{ github.ref_name }}": foo
     steps:
     - run: ""
