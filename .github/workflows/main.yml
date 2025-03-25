@@ -8,9 +8,7 @@ env:
 jobs:
   main:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        x:
-        - ${{ strategy.job-index }}/${{ strategy.job-total }} ${{ strategy.max-parallel }} ${{ strategy.fail-fast }}
+    env:
+      "${{ github.ref_name }}": foo
     steps:
     - run: ""
