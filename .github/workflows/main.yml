@@ -8,7 +8,7 @@ env:
 jobs:
   main:
     runs-on: ubuntu-latest
-    outputs:
-      "${{ github.ref_name }}": foo
+    env:
+      CHECKOUT_VERSION: v4
     steps:
-    - run: ""
+    - uses: actions/checkout@${{ env.CHECKOUT_VERSION }}
