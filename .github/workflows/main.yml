@@ -9,4 +9,4 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@${{ github.ref_name == 'test' && 'v4' || 'v3' }}
+    - {}
