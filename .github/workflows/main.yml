@@ -7,18 +7,6 @@ env:
 
 jobs:
   main:
-    strategy:
-      matrix:
-        x:
-          - ${{ github.ref }}
     runs-on: ubuntu-latest
-    outputs:
-      x: ${{ matrix.x }}
     steps:
-      - run: echo ${{ env.FOO }}
-
-  bla:
-    runs-on: ubuntu-latest
-    needs: main
-    steps:
-      - run: echo ${{ needs.main.outputs.x }}
+      - run: echo ${{ strategy.job-index }}
