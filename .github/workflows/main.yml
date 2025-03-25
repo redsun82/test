@@ -3,13 +3,10 @@ on:
   workflow_dispatch:
     inputs:
       foo:
-        description: ${{ 'foo' }}
-        required: ${{ 'true' }}
-        default: ${{ 'bar' }}
-
-env:
-  FOO: bar
-
+        description: foo
+        required: true
+        default: bar
+        
 jobs:
   main:
     runs-on: ubuntu-latest
