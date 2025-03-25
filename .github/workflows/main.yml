@@ -9,7 +9,8 @@ jobs:
   main:
     runs-on: ubuntu-latest
     strategy:
-      x:
-      - ${{ strategy.job-index }}/${{ strategy.job-total }} ${{ strategy.max-parallel }} ${{ strategy.fail-fast }}
+      matrix:
+        x:
+        - ${{ strategy.job-index }}/${{ strategy.job-total }} ${{ strategy.max-parallel }} ${{ strategy.fail-fast }}
     steps:
     - run: ""
