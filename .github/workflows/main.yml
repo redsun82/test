@@ -8,5 +8,6 @@ env:
 jobs:
   main:
     runs-on: ubuntu-latest
+    name: ${{ strategy.job-index }}/${{ strategy.job-total }} ${{ strategy.max-parallel }} ${{ strategy.fail-fast }}
     steps:
-      - run: echo ${{ strategy.job-index }}/${{ strategy.job-total }} ${{ strategy.max-parallel }} ${{ strategy.fail-fast }}
+    - run: ""
