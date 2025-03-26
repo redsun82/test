@@ -4,12 +4,12 @@ on:
     inputs:
       foo:
         description: foo
-        required: true
-        default: ${{ github.actor }}
-        type: ${{ 'string' }}
+        default: bar
+        type: string
 
 jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-    - run: echo ${{ inputs.foo }}
+    - run: echo ${{ inputs.foo == 'null' }}
+    - run: echo ${{ inputs.foo == null }}
