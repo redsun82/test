@@ -1,3 +1,5 @@
+name: ${{ vars.TEST_NAME }}
+
 on:
   push: {}
   workflow_dispatch:
