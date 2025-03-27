@@ -1,5 +1,3 @@
-name: ${{ vars.TEST_NAME }}
-
 on:
   push: {}
   workflow_dispatch:
@@ -9,9 +7,13 @@ on:
         default: bar
         type: string
 
+env:
+  FOO: ${{ github.actor == 'redsun82' }}
+  BAR: ${{ github.actor != 'redsun82' }}
+
 jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-    - run: echo ${{ inputs.foo == 'null' }}
-    - run: echo ${{ inputs.foo == null }}
+    - run: echo $FOO
+    - run: echo $BAR
