@@ -1,7 +1,19 @@
-on: push
+on:
+  push: {}
+  workflow_dispatch:
+    inputs:
+      foo:
+        description: foo
+        default: bar
+        type: string
+
+env:
+  FOO: ${{ github.actor == 'redsun82' }}
+  BAR: ${{ github.actor != 'redsun82' }}
 
 jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - run: echo hello
+    - run: echo $FOO
+    - run: echo $BAR
