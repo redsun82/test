@@ -8,10 +8,15 @@ on:
         type: string
 
 jobs:
-  main:
-    defaults:
-      run:
-        shell: ${{ inputs.foo || 'bash' }}
+  pre:
+    outputs:
+      foo: bar
+    steps:
+    - run: ""
+  j:
     runs-on: ubuntu-latest
+    needs: pre
+    concurrency:
+      group: ${{ needs.pre.outputs.foo }}
     steps:
     - run: echo Hello
