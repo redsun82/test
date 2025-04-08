@@ -7,13 +7,12 @@ on:
         default: bar
         type: string
 
-env:
-  FOO: ${{ github.actor == 'redsun82' }}
-  BAR: ${{ github.actor != 'redsun82' }}
+defaults:
+  run:
+    shell: ${{ inputs.foo || 'bash' }}
 
 jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-    - run: echo $FOO
-    - run: echo $BAR
+    - run: echo Hello
