@@ -15,6 +15,6 @@ jobs:
         foo: [bar, baz]
         group: [a, b]
     concurrency:
-      group: ${{ matrix.group }}
+      group: ${{ secrets.FOO }}
     steps:
     - run: echo ${{ matrix.foo }}
