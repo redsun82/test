@@ -8,16 +8,14 @@ on:
         type: string
 
 jobs:
-  pre:
-    outputs:
-      foo: bar
-    runs-on: ubuntu-latest
-    steps:
-    - run: ""
   j:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        foo: [bar, baz]
+        group: [a, b]
     needs: pre
     concurrency:
-      group: ${{ needs.pre.outputs.foo }}
+      group: ${{ matrix.group }}
     steps:
-    - run: echo Hello
+    - run: echo ${{ matrix.foo }}
