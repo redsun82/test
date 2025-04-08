@@ -11,6 +11,7 @@ jobs:
   pre:
     outputs:
       foo: bar
+    runs-on: ubuntu-latest
     steps:
     - run: ""
   j:
