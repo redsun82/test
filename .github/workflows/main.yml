@@ -14,7 +14,6 @@ jobs:
       matrix:
         foo: [bar, baz]
         group: [a, b]
-    needs: pre
     concurrency:
       group: ${{ matrix.group }}
     steps:
