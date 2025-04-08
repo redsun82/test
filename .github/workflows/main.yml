@@ -7,14 +7,11 @@ on:
         default: bar
         type: string
 
+env:
+  FOO: ubuntu-latest
+
 jobs:
   j:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        foo: [bar, baz]
-        group: [a, b]
-    concurrency:
-      group: ${{ env.FOO }}
+    runs-on: ${{ env.FOO }}
     steps:
-    - run: echo ${{ matrix.foo }}
+    - run: echo Hello
