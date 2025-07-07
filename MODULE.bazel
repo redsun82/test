@@ -1,0 +1,28 @@
+module(
+    name = "test",
+    version = "0.0",
+)
+
+bazel_dep(name = "rules_rust", version = "0.62.0")
+
+RUST_EDITION = "2024"
+
+RUST_VERSION = "1.88.0"
+
+rust = use_extension("@rules_rust//rust:extensions.bzl", "rust")
+rust.toolchain(
+    edition = RUST_EDITION,
+    sha256s = {
+        "rustc-1.88.0-x86_64-unknown-linux-gnu.tar.xz": "b049fd57fce274d10013e2cf0e05f215f68f6580865abc52178f66ae9bf43fd8",
+        "clippy-1.88.0-x86_64-unknown-linux-gnu.tar.xz": "db09c9e4a8a0b486781d87403f74a203a58d9ef0a58ba10c39264916d93ac603",
+        "cargo-1.88.0-x86_64-unknown-linux-gnu.tar.xz": "856962610ee821648cee32e3d6abac667af7bb7ea6ec6f3d184cc31e66044f6b",
+        "llvm-tools-1.88.0-x86_64-unknown-linux-gnu.tar.xz": "16e8d9b4187cc3936feddd9ceccde0157a4a1b2be98ca9c202cda304e0e81853",
+        "rust-std-1.88.0-x86_64-unknown-linux-gnu.tar.xz": "36d7eacf46bd5199cb433e49a9ed9c9b380d82f8a0ebc05e89b43b51c070c955",
+    },
+    versions = [RUST_VERSION],
+)
+use_repo(rust, "rust_toolchains")
+
+register_toolchains("@rust_toolchains//:all")
+
+
