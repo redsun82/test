@@ -1,17 +1,15 @@
 on:
   push: {}
-  workflow_dispatch:
-    inputs:
-      foo:
-        description: foo
-        default: bar
-        type: string
 
 env:
-  FOO: ubuntu-latest
-
+  BAR: >-
+    ${{ fromJSON('{"bar": "my bar"}').bar }}
+  BAZ: >-
+    ${{ fromJSON('{"bar": "my bar"}').baz || 'baz' }}
 jobs:
   j:
-    runs-on: ${{ env.FOO }}
+    runs-on: ubuntu-latest
     steps:
-    - run: echo Hello
+    - run: |
+        echo $BAR
+        echo $BAZ
