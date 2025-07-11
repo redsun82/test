@@ -12,6 +12,6 @@ jobs:
         echo $BAZ
       env:
         BAZ: >-
-          ${{ fromJSON(toJSON(fromJSON('{}').bar))['x'] || 'def' }}
+          ${{ fromJSON('null')['x'] || 'def' }}
 
       
