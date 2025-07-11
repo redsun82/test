@@ -2,10 +2,7 @@ on:
   push: {}
 
 env:
-  BAR: >-
-    ${{ fromJSON('{"bar": "my bar"}').bar }}
-  BAZ: >-
-    ${{ fromJSON('{"bar": "my bar"}').baz || 'baz' }}
+  BAR: bar
 jobs:
   j:
     runs-on: ubuntu-latest
@@ -13,3 +10,8 @@ jobs:
     - run: |
         echo $BAR
         echo $BAZ
+      env:
+        BAZ: >-
+          ${{ fromJSON('{"bar": "my bar"}')[env.BAR] }}
+
+      
