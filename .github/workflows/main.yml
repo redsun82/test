@@ -12,6 +12,6 @@ jobs:
         echo $BAZ
       env:
         BAZ: >-
-          ${{ fromJSON('gla')[env.BAR] }}
+          ${{ toJSON(fromJSON('{}').bar) }}
 
       
