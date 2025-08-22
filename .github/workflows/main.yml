@@ -7,3 +7,4 @@ jobs:
     - run: mount      
     - run: df
     - run: df ${{ runner.temp }}
+    - run: df /tmp
