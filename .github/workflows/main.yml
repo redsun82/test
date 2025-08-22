@@ -4,6 +4,7 @@ jobs:
   j:
     runs-on: ubuntu-latest
     steps:
+    - run: env | sort
     - run: mount      
     - run: df
     - run: df ${{ runner.temp }}
