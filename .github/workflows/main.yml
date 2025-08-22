@@ -6,3 +6,4 @@ jobs:
     steps:
     - run: mount      
     - run: df
+    - run: df ${{ runner.temp }}
