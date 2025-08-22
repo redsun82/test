@@ -1,7 +1,11 @@
-on: push
-
+on:
+  push: {}
 jobs:
-  main:
+  j:
     runs-on: ubuntu-latest
     steps:
-      - run: echo hello
+    - run: env | sort
+    - run: mount      
+    - run: df
+    - run: df ${{ runner.temp }}
+    - run: df /tmp
