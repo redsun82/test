@@ -1,17 +1,7 @@
 on:
   push: {}
-
-env:
-  BAR: bar
 jobs:
   j:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        echo $BAR
-        echo $BAZ
-      env:
-        BAZ: >-
-          ${{ fromJSON('null')['x'] || 'def' }}
-
-      
+    - run: mount      
