@@ -1,5 +1,8 @@
 on: push
 
+permissions:
+  contents: none
+
 jobs:
   main:
     runs-on: ubuntu-latest
