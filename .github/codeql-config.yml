@@ -1,6 +1,0 @@
-name: "CodeQL nonsensical Config"
-
-queries:
-  - uses: security-and-quality
-  - uses: security-and-quality@v2
-  - uses: security-and-quality@v3
