@@ -1,11 +1,22 @@
 on:
   push: {}
 jobs:
-  j:
+  j1:
     runs-on: ubuntu-latest
     steps:
     - run: env | sort
-    - run: mount      
-    - run: df
-    - run: df ${{ runner.temp }}
-    - run: df /tmp
+    - run: |
+        cat > .github/workflows/foo.yml << EOF
+        on:
+          workflow_call: {}
+        jobs:
+          j:
+            runs-on: ubuntu-latest
+            steps:
+            - run: |
+                echo Hello world!
+        EOF
+  j2:
+    needs: j1
+    uses: ./.github/workflows/foo.yml
+    
