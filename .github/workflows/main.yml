@@ -5,19 +5,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: env | sort
-    - uses: actions/checkout@v4
     - run: |
-        cat > .github/workflows/foo.yml << EOF
-        on:
-          workflow_call: {}
-        jobs:
-          j:
-            runs-on: ubuntu-latest
-            steps:
-            - run: |
-                echo Hello world!
+        mkdir -p actions/foo
+        cat > actions/foo/action.yml << EOF
+        name: Foo
+        runs:
+          using: composite
+          steps:
+            - run: echo "Hello, world"
+              shell: bash
         EOF
-  j2:
-    needs: j1
-    uses: ./.github/workflows/foo.yml
+    - uses: ./actions/foo
     
