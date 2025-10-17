@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: env | sort
+    - uses: actions/checkout@v4
     - run: |
         cat > .github/workflows/foo.yml << EOF
         on:
