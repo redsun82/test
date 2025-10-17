@@ -1,2 +1,6 @@
 on: {}
-jobs: {}
+jobs:
+  j:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo nope
