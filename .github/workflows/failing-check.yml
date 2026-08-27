@@ -1,0 +1,16 @@
+name: Failing check
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: none
+
+jobs:
+  fail:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "This check is intentionally failing"
+          exit 1
